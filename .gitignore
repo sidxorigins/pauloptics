@@ -1,0 +1,6 @@
+.DS_Store
+node_modules/
+splash-screen/node_modules/
+splash-screen/out/
+.env
+.env.local

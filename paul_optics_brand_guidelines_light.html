@@ -1,0 +1,785 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;900&family=Cabin:wght@400;500;600;700&display=swap');
+
+:root {
+  --po-black:  #111111;
+  --po-navy:   #1A3A7C;
+  --po-royal:  #2563C4;
+  --po-sky:    #4A87D0;
+  --po-pale:   #C8DCF5;
+  --po-ice:    #EBF2FC;
+  --po-gold:   #E8A820;
+  --po-white:  #FFFFFF;
+  --po-off:    #F7F9FD;
+  --po-mist:   #E8EEF8;
+  --po-gray:   #6B7280;
+  --r: 'Raleway', sans-serif;
+  --c: 'Cabin', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.pg { font-family: var(--c); background: #fff; }
+
+/* HERO */
+.hero {
+  background: var(--po-off);
+  border-bottom: 1px solid var(--po-mist);
+  padding: 3rem 2.5rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(37,99,196,0.07) 0%, transparent 70%);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -50px; left: 60px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,168,32,0.06) 0%, transparent 70%);
+}
+.hero-eyebrow {
+  font-family: var(--c);
+  font-size: 9px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--po-royal);
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+.hero-main {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.hero-logo-box {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid var(--po-mist);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+}
+.hero-logo-box img { width: 72px; height: 72px; object-fit: contain; }
+.hero-wordmark {
+  font-family: var(--r);
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--po-navy);
+  letter-spacing: 3px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.hero-tagline {
+  font-family: var(--c);
+  font-size: 11px;
+  color: var(--po-gray);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.hero-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.pill {
+  background: #fff;
+  border: 0.5px solid var(--po-mist);
+  border-radius: 100px;
+  padding: 5px 14px;
+  font-family: var(--c);
+  font-size: 10px;
+  color: var(--po-gray);
+  letter-spacing: 1px;
+}
+.pill.accent {
+  background: var(--po-ice);
+  border-color: var(--po-pale);
+  color: var(--po-royal);
+  font-weight: 600;
+}
+
+/* SECTIONS */
+.section { padding: 2.5rem 2.5rem 0; }
+.sec-label {
+  font-family: var(--c);
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--po-royal);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sec-label::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: var(--po-mist);
+}
+.sec-title {
+  font-family: var(--r);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--po-navy);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.5px;
+}
+.divider {
+  height: 1px;
+  background: var(--po-mist);
+  margin: 0 2.5rem;
+}
+
+/* COLOR CHIPS */
+.color-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+.chip {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 0.5px solid #e2e8f0;
+}
+.chip-sw { height: 68px; }
+.chip-inf { padding: 10px 11px 12px; background: #fff; }
+.chip-name {
+  font-family: var(--r);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--po-black);
+  margin-bottom: 2px;
+}
+.chip-hex {
+  font-size: 10px;
+  color: var(--po-gray);
+  font-family: 'Courier New', monospace;
+  margin-bottom: 4px;
+}
+.chip-role {
+  font-size: 9.5px;
+  color: var(--po-gray);
+  line-height: 1.45;
+  font-family: var(--c);
+}
+
+/* TWO COL */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem; }
+.card {
+  background: var(--po-off);
+  border-radius: 10px;
+  padding: 1.1rem 1.25rem;
+  border: 0.5px solid var(--po-mist);
+}
+.card-lbl {
+  font-family: var(--c);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--po-royal);
+  margin-bottom: 0.6rem;
+}
+.do-item, .dont-item {
+  font-family: var(--c);
+  font-size: 11.5px;
+  margin-bottom: 7px;
+  display: flex;
+  gap: 7px;
+  align-items: flex-start;
+  line-height: 1.5;
+  color: var(--po-black);
+}
+.do-item .mk { color: #16803c; font-weight: 700; flex-shrink: 0; }
+.dont-item .mk { color: #b91c1c; font-weight: 700; flex-shrink: 0; }
+
+/* LOGO GRID */
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+.logo-box {
+  border-radius: 10px;
+  border: 0.5px solid #e2e8f0;
+  overflow: hidden;
+}
+.logo-inner {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-inner img { max-height: 80px; max-width: 85%; object-fit: contain; }
+.logo-lbl {
+  font-family: var(--c);
+  padding: 7px 12px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--po-gray);
+  background: var(--po-off);
+  border-top: 0.5px solid var(--po-mist);
+}
+
+/* CLEARSPACE */
+.cs-wrap {
+  background: var(--po-off);
+  border-radius: 10px;
+  padding: 2rem;
+  border: 0.5px solid var(--po-mist);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.cs-inner {
+  border: 1.5px dashed var(--po-pale);
+  padding: 28px;
+  border-radius: 4px;
+  position: relative;
+  background: #fff;
+}
+.cs-inner img { width: 72px; display: block; }
+.cs-note {
+  font-family: var(--c);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--po-royal);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
+/* TYPOGRAPHY */
+.type-block {
+  border: 0.5px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.type-hdr {
+  background: var(--po-off);
+  padding: 9px 16px;
+  border-bottom: 0.5px solid var(--po-mist);
+  font-family: var(--c);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--po-gray);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.type-badge {
+  font-size: 10px;
+  background: var(--po-ice);
+  color: var(--po-royal);
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border: 0.5px solid var(--po-pale);
+}
+.type-body { padding: 1.25rem 1.5rem; background: #fff; }
+
+/* VOICE */
+.voice-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+.voice-card {
+  background: #fff;
+  border: 0.5px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1.1rem 1rem;
+}
+.voice-num {
+  font-family: var(--r);
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--po-pale);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.voice-word {
+  font-family: var(--r);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--po-navy);
+  margin-bottom: 4px;
+}
+.voice-desc {
+  font-family: var(--c);
+  font-size: 11px;
+  color: var(--po-gray);
+  line-height: 1.5;
+}
+
+/* WRITING */
+.writing-box {
+  border: 0.5px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.writing-cols { display: grid; grid-template-columns: 1fr 1fr; }
+.writing-col { padding: 1.1rem 1.25rem; background: #fff; }
+.writing-col:first-child { border-right: 0.5px solid var(--po-mist); }
+.writing-tag {
+  font-family: var(--c);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.writing-sample {
+  font-family: var(--c);
+  font-size: 12px;
+  line-height: 1.75;
+  font-style: italic;
+  color: var(--po-black);
+}
+
+/* SPACING */
+.sp-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  background: var(--po-off);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  border: 0.5px solid var(--po-mist);
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.sp-item { text-align: center; }
+.sp-bar { background: var(--po-royal); border-radius: 2px; width: 12px; margin: 0 auto 6px; }
+.sp-lbl { font-family: var(--c); font-size: 9px; color: var(--po-gray); font-weight: 700; }
+
+/* FOOTER */
+.brand-footer {
+  background: var(--po-navy);
+  margin: 2.5rem 2.5rem 0;
+  border-radius: 12px;
+  padding: 1.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.footer-wm {
+  font-family: var(--r);
+  font-size: 22px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 3px;
+}
+.footer-wm span { color: var(--po-gold); }
+.footer-meta {
+  font-family: var(--c);
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  text-align: right;
+  line-height: 1.8;
+}
+</style>
+
+<div class="pg">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Brand Identity Guidelines · Version 1.0</div>
+  <div class="hero-main">
+    <div class="hero-logo-box">
+      <img src="/Users/sunjehraja/Downloads/paul optics/Logos/logo.jpg" alt="Paul Optics"
+        onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'font-family:Raleway,sans-serif;font-size:11px;font-weight:900;color:#1A3A7C;letter-spacing:2px;text-align:center;\'>PAUL<br>OPTICS</div>';" />
+    </div>
+    <div>
+      <div class="hero-wordmark">PAUL OPTICS</div>
+      <div class="hero-tagline">Redefining Vision Since 1986</div>
+    </div>
+  </div>
+  <div class="hero-pills">
+    <div class="pill accent">Primary: Raleway</div>
+    <div class="pill accent">Secondary: Cabin</div>
+    <div class="pill">Est. 1986</div>
+    <div class="pill">Optical · Eyecare · Eyewear</div>
+  </div>
+</div>
+
+<!-- BRAND FOUNDATION -->
+<div class="section">
+  <div class="sec-label">Brand Foundation</div>
+  <div class="sec-title">Mission & Positioning</div>
+
+  <div style="background: var(--po-ice); border-radius: 12px; padding: 1.75rem 2rem; border: 0.5px solid var(--po-pale); text-align: center; margin-bottom: 1rem;">
+    <div style="font-family: var(--c); font-size: 9px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--po-royal); margin-bottom: 0.75rem;">Official Tagline — Always Use Verbatim</div>
+    <div style="font-family: var(--r); font-size: 24px; font-weight: 300; color: var(--po-navy); letter-spacing: 1px;">"Redefining Vision Since 1986"</div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-lbl">Brand Promise</div>
+      <div style="font-family: var(--c); font-size: 12.5px; color: var(--po-black); line-height: 1.75;">Precision eyecare backed by nearly four decades of expertise — where clinical excellence meets a deeply personal touch.</div>
+    </div>
+    <div class="card">
+      <div class="card-lbl">Target Audience</div>
+      <div style="font-family: var(--c); font-size: 12.5px; color: var(--po-black); line-height: 1.75;">Discerning individuals across all ages who value professional eyecare, premium eyewear, and trusted long-term guidance.</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- COLOR SYSTEM -->
+<div class="section">
+  <div class="sec-label">Visual Identity</div>
+  <div class="sec-title">Color System</div>
+
+  <div class="color-row">
+    <div class="chip">
+      <div class="chip-sw" style="background:#1A3A7C;"></div>
+      <div class="chip-inf">
+        <div class="chip-name">Deep Navy</div>
+        <div class="chip-hex">#1A3A7C</div>
+        <div class="chip-role">Primary. Headings, hero areas, key UI elements.</div>
+      </div>
+    </div>
+    <div class="chip">
+      <div class="chip-sw" style="background:#2563C4;"></div>
+      <div class="chip-inf">
+        <div class="chip-name">Royal Blue</div>
+        <div class="chip-hex">#2563C4</div>
+        <div class="chip-role">CTAs, links, interactive elements, accents.</div>
+      </div>
+    </div>
+    <div class="chip">
+      <div class="chip-sw" style="background:#4A87D0;"></div>
+      <div class="chip-inf">
+        <div class="chip-name">Sky Blue</div>
+        <div class="chip-hex">#4A87D0</div>
+        <div class="chip-role">Supporting color, infographics, secondary labels.</div>
+      </div>
+    </div>
+    <div class="chip">
+      <div class="chip-sw" style="background:#E8A820;"></div>
+      <div class="chip-inf">
+        <div class="chip-name">Iris Gold</div>
+        <div class="chip-hex">#E8A820</div>
+        <div class="chip-role">Premium accent only. Badges, highlights, focal points.</div>
+      </div>
+    </div>
+    <div class="chip">
+      <div class="chip-sw" style="background:#EBF2FC; border-bottom: 0.5px solid #e2e8f0;"></div>
+      <div class="chip-inf">
+        <div class="chip-name">Ice Blue</div>
+        <div class="chip-hex">#EBF2FC</div>
+        <div class="chip-role">Backgrounds, cards, light containers.</div>
+      </div>
+    </div>
+    <div class="chip">
+      <div class="chip-sw" style="background:#F7F9FD; border-bottom: 0.5px solid #e2e8f0;"></div>
+      <div class="chip-inf">
+        <div class="chip-name">Off White</div>
+        <div class="chip-hex">#F7F9FD</div>
+        <div class="chip-role">Page backgrounds, surface panels.</div>
+      </div>
+    </div>
+    <div class="chip">
+      <div class="chip-sw" style="background:#111111;"></div>
+      <div class="chip-inf">
+        <div class="chip-name">Rich Black</div>
+        <div class="chip-hex">#111111</div>
+        <div class="chip-role">Body text, high-contrast type on light backgrounds.</div>
+      </div>
+    </div>
+    <div class="chip">
+      <div class="chip-sw" style="background:#6B7280;"></div>
+      <div class="chip-inf">
+        <div class="chip-name">Slate Gray</div>
+        <div class="chip-hex">#6B7280</div>
+        <div class="chip-role">Captions, subtitles, secondary text.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-lbl">Do</div>
+      <div class="do-item"><span class="mk">✓</span> Use Deep Navy as the dominant brand color</div>
+      <div class="do-item"><span class="mk">✓</span> Use Iris Gold sparingly as a premium accent</div>
+      <div class="do-item"><span class="mk">✓</span> Pair Navy with Off White for maximum legibility</div>
+      <div class="do-item"><span class="mk">✓</span> Limit compositions to 3 palette colors maximum</div>
+    </div>
+    <div class="card">
+      <div class="card-lbl">Don't</div>
+      <div class="dont-item"><span class="mk">✗</span> Place Gold on Sky Blue — insufficient contrast</div>
+      <div class="dont-item"><span class="mk">✗</span> Use more than 3 brand colors in one layout</div>
+      <div class="dont-item"><span class="mk">✗</span> Introduce any off-palette colors without approval</div>
+      <div class="dont-item"><span class="mk">✗</span> Use Gold as a background color for large areas</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- LOGO USAGE -->
+<div class="section">
+  <div class="sec-label">Visual Identity</div>
+  <div class="sec-title">Logo Usage</div>
+
+  <div class="logo-grid">
+    <div class="logo-box">
+      <div class="logo-inner" style="background:#ffffff;">
+        <div style="text-align:center; font-family:'Raleway',sans-serif;">
+          <div style="font-size:9px; font-weight:900; color:#1A3A7C; letter-spacing:2px; margin-bottom:2px;">PAUL OPTICS</div>
+          <div style="font-size:7px; color:#6B7280; letter-spacing:1.5px;">REDEFINING VISION SINCE 1986</div>
+          <div style="font-size:8px; color:#4A87D0; margin-top:6px;">◉ Logo on White</div>
+        </div>
+      </div>
+      <div class="logo-lbl" style="color:#16803c;">✓ Primary — On White</div>
+    </div>
+    <div class="logo-box">
+      <div class="logo-inner" style="background:#EBF2FC;">
+        <div style="text-align:center; font-family:'Raleway',sans-serif;">
+          <div style="font-size:9px; font-weight:900; color:#1A3A7C; letter-spacing:2px; margin-bottom:2px;">PAUL OPTICS</div>
+          <div style="font-size:7px; color:#4A87D0; letter-spacing:1.5px;">REDEFINING VISION SINCE 1986</div>
+          <div style="font-size:8px; color:#2563C4; margin-top:6px;">◉ Logo on Ice Blue</div>
+        </div>
+      </div>
+      <div class="logo-lbl" style="color:#16803c;">✓ On Light Blue Background</div>
+    </div>
+    <div class="logo-box">
+      <div class="logo-inner" style="background:#1A3A7C;">
+        <div style="text-align:center; font-family:'Raleway',sans-serif;">
+          <div style="font-size:9px; font-weight:900; color:#ffffff; letter-spacing:2px; margin-bottom:2px;">PAUL OPTICS</div>
+          <div style="font-size:7px; color:rgba(255,255,255,0.6); letter-spacing:1.5px;">REDEFINING VISION SINCE 1986</div>
+          <div style="font-size:8px; color:#E8A820; margin-top:6px;">◉ Reversed on Navy</div>
+        </div>
+      </div>
+      <div class="logo-lbl" style="color:#16803c;">✓ Reversed — On Navy</div>
+    </div>
+  </div>
+
+  <!-- Clearspace -->
+  <div class="cs-wrap">
+    <div style="text-align:center;">
+      <div style="font-family: var(--c); font-size:10px; font-weight:700; color:var(--po-gray); letter-spacing:2px; text-transform:uppercase; margin-bottom:1rem;">Minimum Clearspace</div>
+      <div style="position:relative; display:inline-block;">
+        <div style="position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-family:var(--c); font-size:9px; color:var(--po-royal); font-weight:700; white-space:nowrap;">½ logo height</div>
+        <div style="position:absolute; left:-38px; top:50%; transform:translateY(-50%); font-family:var(--c); font-size:9px; color:var(--po-royal); font-weight:700; white-space:nowrap; transform:translateY(-50%) rotate(-90deg);">½ logo height</div>
+        <div class="cs-inner">
+          <div style="font-family:'Raleway',sans-serif; text-align:center; padding:4px 8px;">
+            <div style="font-size:14px; font-weight:900; color:#1A3A7C; letter-spacing:3px;">PAUL OPTICS</div>
+            <div style="font-size:9px; color:#6B7280; letter-spacing:2px; margin-top:2px;">REDEFINING VISION SINCE 1986</div>
+          </div>
+        </div>
+      </div>
+      <div style="font-family:var(--c); font-size:10px; color:var(--po-gray); margin-top:1rem;">Always maintain at least ½ the logo's height as clear space on all four sides.</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-lbl">Do</div>
+      <div class="do-item"><span class="mk">✓</span> Always use the logo on white or very light backgrounds</div>
+      <div class="do-item"><span class="mk">✓</span> Maintain minimum clearspace on all sides</div>
+      <div class="do-item"><span class="mk">✓</span> Minimum digital size: 120px wide</div>
+      <div class="do-item"><span class="mk">✓</span> Use original logo files — never recreate</div>
+    </div>
+    <div class="card">
+      <div class="card-lbl">Don't</div>
+      <div class="dont-item"><span class="mk">✗</span> Stretch, skew, or alter logo proportions</div>
+      <div class="dont-item"><span class="mk">✗</span> Apply drop shadows, outlines, or effects</div>
+      <div class="dont-item"><span class="mk">✗</span> Place on busy, patterned, or dark backgrounds</div>
+      <div class="dont-item"><span class="mk">✗</span> Recolor any element of the logo mark</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- TYPOGRAPHY -->
+<div class="section">
+  <div class="sec-label">Visual Identity</div>
+  <div class="sec-title">Typography</div>
+
+  <div class="type-block">
+    <div class="type-hdr">
+      Primary Typeface — Display & Headings
+      <span class="type-badge">Raleway</span>
+    </div>
+    <div class="type-body">
+      <div style="font-family:'Raleway',sans-serif; font-size:30px; font-weight:900; color:var(--po-navy); letter-spacing:-0.5px; line-height:1.15; margin-bottom:10px;">Clear Vision. Expert Care.<br>Since 1986.</div>
+      <div style="font-family:'Raleway',sans-serif; font-size:13px; font-weight:700; color:var(--po-royal); letter-spacing:4px; text-transform:uppercase; margin-bottom:8px;">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk</div>
+      <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:8px;">
+        <span style="font-family:'Raleway',sans-serif; font-size:12px; font-weight:300; color:var(--po-gray);">Light 300</span>
+        <span style="font-family:'Raleway',sans-serif; font-size:12px; font-weight:400; color:var(--po-gray);">Regular 400</span>
+        <span style="font-family:'Raleway',sans-serif; font-size:12px; font-weight:600; color:var(--po-black);">SemiBold 600</span>
+        <span style="font-family:'Raleway',sans-serif; font-size:12px; font-weight:700; color:var(--po-black);">Bold 700</span>
+        <span style="font-family:'Raleway',sans-serif; font-size:12px; font-weight:900; color:var(--po-navy);">Black 900</span>
+      </div>
+      <div style="font-family:var(--c); font-size:11px; color:var(--po-gray);">Use 700–900 for headlines and brand wordmark. 300 for elegant editorial callouts. Avoid below 400 for body use.</div>
+    </div>
+  </div>
+
+  <div class="type-block">
+    <div class="type-hdr">
+      Secondary Typeface — Body & UI
+      <span class="type-badge">Cabin</span>
+    </div>
+    <div class="type-body">
+      <div style="font-family:'Cabin',sans-serif; font-size:15px; font-weight:400; color:var(--po-black); line-height:1.85; margin-bottom:10px;">At Paul Optics, every lens is chosen with precision and care. Our consultants have guided patients to perfect vision for nearly four decades, combining advanced diagnostic technology with a deeply personal approach to eyecare.</div>
+      <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:8px;">
+        <span style="font-family:'Cabin',sans-serif; font-size:12px; font-weight:400; color:var(--po-gray);">Regular 400</span>
+        <span style="font-family:'Cabin',sans-serif; font-size:12px; font-weight:500; color:var(--po-black);">Medium 500</span>
+        <span style="font-family:'Cabin',sans-serif; font-size:12px; font-weight:600; color:var(--po-black);">SemiBold 600</span>
+        <span style="font-family:'Cabin',sans-serif; font-size:12px; font-weight:700; color:var(--po-navy);">Bold 700</span>
+      </div>
+      <div style="font-family:var(--c); font-size:11px; color:var(--po-gray);">Use 400 for body copy. 600–700 for UI labels, captions, and functional text. Never use italic Cabin for extended body copy.</div>
+    </div>
+  </div>
+
+  <!-- Type scale -->
+  <div class="card" style="margin-bottom:1rem;">
+    <div class="card-lbl">Type Scale</div>
+    <div style="display:flex; flex-direction:column; gap:10px; margin-top:0.5rem;">
+      <div style="display:flex; align-items:baseline; gap:12px; border-bottom:0.5px solid var(--po-mist); padding-bottom:8px;">
+        <div style="font-family:'Raleway',sans-serif; font-size:28px; font-weight:900; color:var(--po-navy); line-height:1;">Display</div>
+        <div style="font-family:var(--c); font-size:10px; color:var(--po-gray);">Raleway 900 · 28–36px · Page heroes, campaigns</div>
+      </div>
+      <div style="display:flex; align-items:baseline; gap:12px; border-bottom:0.5px solid var(--po-mist); padding-bottom:8px;">
+        <div style="font-family:'Raleway',sans-serif; font-size:20px; font-weight:700; color:var(--po-navy); line-height:1;">Heading 1</div>
+        <div style="font-family:var(--c); font-size:10px; color:var(--po-gray);">Raleway 700 · 20–24px · Section titles</div>
+      </div>
+      <div style="display:flex; align-items:baseline; gap:12px; border-bottom:0.5px solid var(--po-mist); padding-bottom:8px;">
+        <div style="font-family:'Raleway',sans-serif; font-size:15px; font-weight:600; color:var(--po-navy); line-height:1;">Heading 2</div>
+        <div style="font-family:var(--c); font-size:10px; color:var(--po-gray);">Raleway 600 · 14–16px · Subsections</div>
+      </div>
+      <div style="display:flex; align-items:baseline; gap:12px; border-bottom:0.5px solid var(--po-mist); padding-bottom:8px;">
+        <div style="font-family:'Cabin',sans-serif; font-size:14px; font-weight:400; color:var(--po-black); line-height:1;">Body Text</div>
+        <div style="font-family:var(--c); font-size:10px; color:var(--po-gray);">Cabin 400 · 13–15px · Paragraphs, descriptions</div>
+      </div>
+      <div style="display:flex; align-items:baseline; gap:12px;">
+        <div style="font-family:'Cabin',sans-serif; font-size:11px; font-weight:600; color:var(--po-gray); letter-spacing:2px; text-transform:uppercase; line-height:1;">Label / Caption</div>
+        <div style="font-family:var(--c); font-size:10px; color:var(--po-gray);">Cabin 600 · 9–11px · All caps, labels, metadata</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BRAND VOICE -->
+<div class="section">
+  <div class="sec-label">Brand Personality</div>
+  <div class="sec-title">Voice & Tone</div>
+
+  <div class="voice-grid">
+    <div class="voice-card">
+      <div class="voice-num">01</div>
+      <div class="voice-word">Precise</div>
+      <div class="voice-desc">Expert, accurate, and technically credible in all communications</div>
+    </div>
+    <div class="voice-card">
+      <div class="voice-num">02</div>
+      <div class="voice-word">Premium</div>
+      <div class="voice-desc">Confident and elevated — reflecting 38+ years of heritage</div>
+    </div>
+    <div class="voice-card">
+      <div class="voice-num">03</div>
+      <div class="voice-word">Trustworthy</div>
+      <div class="voice-desc">Honest and reassuring — patients feel safe and guided</div>
+    </div>
+    <div class="voice-card">
+      <div class="voice-num">04</div>
+      <div class="voice-word">Caring</div>
+      <div class="voice-desc">Warm and personal — every patient's vision matters deeply</div>
+    </div>
+  </div>
+
+  <div class="writing-box">
+    <div class="writing-cols">
+      <div class="writing-col">
+        <div class="writing-tag" style="color:#16803c;">✓ Write Like This</div>
+        <div class="writing-sample">"Our optometrists bring precision and care to every consultation — because your vision deserves nothing less than the best."</div>
+      </div>
+      <div class="writing-col">
+        <div class="writing-tag" style="color:#b91c1c;">✗ Not Like This</div>
+        <div class="writing-sample">"Check out our awesome deals on specs! Get your eyes tested today — super easy, super quick, book now!"</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-lbl">Tone in Context</div>
+      <div class="do-item"><span class="mk">✓</span> Clinical content: precise, informative, reassuring</div>
+      <div class="do-item"><span class="mk">✓</span> Social media: warm, accessible, never casual</div>
+      <div class="do-item"><span class="mk">✓</span> Ads: confident, benefit-led, heritage-anchored</div>
+    </div>
+    <div class="card">
+      <div class="card-lbl">Always Avoid</div>
+      <div class="dont-item"><span class="mk">✗</span> Slang, abbreviations, or overly casual language</div>
+      <div class="dont-item"><span class="mk">✗</span> Superlatives without substance ("the best ever")</div>
+      <div class="dont-item"><span class="mk">✗</span> Medical claims without clinical backing</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SPACING -->
+<div class="section">
+  <div class="sec-label">Design System</div>
+  <div class="sec-title">Spacing Scale</div>
+  <div class="sp-row">
+    <div class="sp-item"><div class="sp-bar" style="height:4px;"></div><div class="sp-lbl">4px</div></div>
+    <div class="sp-item"><div class="sp-bar" style="height:8px;"></div><div class="sp-lbl">8px</div></div>
+    <div class="sp-item"><div class="sp-bar" style="height:12px;"></div><div class="sp-lbl">12px</div></div>
+    <div class="sp-item"><div class="sp-bar" style="height:16px;"></div><div class="sp-lbl">16px</div></div>
+    <div class="sp-item"><div class="sp-bar" style="height:24px;"></div><div class="sp-lbl">24px</div></div>
+    <div class="sp-item"><div class="sp-bar" style="height:32px;"></div><div class="sp-lbl">32px</div></div>
+    <div class="sp-item"><div class="sp-bar" style="height:48px;"></div><div class="sp-lbl">48px</div></div>
+    <div class="sp-item"><div class="sp-bar" style="height:64px; background:var(--po-navy);"></div><div class="sp-lbl">64px</div></div>
+    <div style="margin-left:auto; max-width:160px; font-family:var(--c); font-size:11px; color:var(--po-gray); line-height:1.6;">Based on an 8px base grid. All layout measurements use multiples of 8. Use 4px only for tight internal spacing.</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="brand-footer" style="margin-bottom:0;">
+  <div>
+    <div class="footer-wm">PAUL <span>OPTICS</span></div>
+    <div style="font-family:var(--c); font-size:10px; color:rgba(255,255,255,0.4); letter-spacing:2px; margin-top:4px;">REDEFINING VISION SINCE 1986</div>
+  </div>
+  <div class="footer-meta">
+    Brand Identity Guidelines · v1.0<br>
+    For brand queries: brand@pauloptics.com<br>
+    © 2026 Paul Optics. All rights reserved.
+  </div>
+</div>
+
+</div>
