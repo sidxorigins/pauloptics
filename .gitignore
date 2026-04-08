@@ -4,3 +4,5 @@ splash-screen/node_modules/
 splash-screen/out/
 .env
 .env.local
+.claude/
+.vscode/

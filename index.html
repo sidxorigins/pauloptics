@@ -180,8 +180,8 @@
       text-decoration: none;
     }
     .nav-logo {
-      width: 48px;
-      height: 48px;
+      width: 72px;
+      height: 72px;
       object-fit: contain;
     }
     .nav-links {
@@ -243,7 +243,7 @@
 
     /* ── HERO ── */
     .hero {
-      padding: 140px 2rem 80px;
+      padding: 140px 2rem 60px;
       background: var(--clay-bg);
       position: relative;
       overflow: hidden;
@@ -405,13 +405,12 @@
 
     /* ── TRUST BAR ── */
     .trust-bar {
-      padding: 0 2rem;
-      margin-top: -30px;
+      padding: 0;
       position: relative;
       z-index: 2;
     }
     .trust-inner {
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
       background: var(--clay-surface);
       border-radius: var(--clay-radius);
@@ -575,7 +574,7 @@
     .brands-track {
       display: flex;
       gap: 2rem;
-      animation: marquee 25s linear infinite;
+      animation: marquee 35s linear infinite;
       width: max-content;
     }
     .brands-track:hover { animation-play-state: paused; }
@@ -585,19 +584,34 @@
     }
     .brand-logo-card {
       flex-shrink: 0;
-      width: 150px;
-      height: 72px;
+      width: 160px;
+      height: 76px;
       background: var(--clay-bg);
       border-radius: 16px;
       box-shadow: var(--clay-shadow-pressed);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 14px;
+      padding: 14px 20px;
       transition: transform 0.2s;
     }
     .brand-logo-card:hover { transform: scale(1.05); }
-    .brand-logo-card svg { width: 100%; height: 100%; }
+    .brand-logo-card img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: grayscale(100%) brightness(0.3);
+      opacity: 0.7;
+      transition: filter 0.3s, opacity 0.3s;
+      mix-blend-mode: multiply;
+    }
+    .brand-logo-card:hover img {
+      filter: grayscale(0%) brightness(1);
+      opacity: 1;
+    }
+    .brand-logo-card.wide {
+      width: 200px;
+    }
 
     /* ── WHY US ── */
     .why-grid {
@@ -962,11 +976,9 @@
       </div>
     </div>
   </div>
-</section>
-
-<!-- ── TRUST BAR ── -->
-<div class="trust-bar">
-  <div class="trust-inner" id="trustBar">
+  <!-- ── TRUST BAR (inside hero) ── -->
+  <div class="trust-bar" style="padding: 0 2rem; margin-top: 3rem;">
+      <div class="trust-inner" id="trustBar">
     <div class="trust-item">
       <div class="trust-icon">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -995,8 +1007,9 @@
       <div class="trust-num"><span class="counter" data-target="4.5" data-duration="1500" data-decimals="1">0</span></div>
       <div class="trust-label">Star Rating<br/>on Google</div>
     </div>
+    </div>
   </div>
-</div>
+</section>
 
 <!-- ── SERVICES ── -->
 <section class="section" id="services">
@@ -1061,147 +1074,37 @@
 
     <div class="brands-wrap">
       <div class="brands-track" id="brandsTrack">
-        <!-- Ray-Ban -->
-        <div class="brand-logo-card">
-          <svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="22" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#1A3A7C" letter-spacing="1">RAY</text>
-            <text x="80" y="22" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#c41e3a" letter-spacing="1" dx="0" dy="0">
-              <tspan fill="#1A3A7C">RAY</tspan><tspan fill="#c41e3a">·</tspan><tspan fill="#1A3A7C">BAN</tspan>
-            </text>
-            <line x1="30" y1="28" x2="130" y2="28" stroke="#c41e3a" stroke-width="1.5"/>
-            <text x="80" y="42" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#6B7280" letter-spacing="3">GENUINE SINCE 1937</text>
-          </svg>
-        </div>
-        <!-- Oakley -->
-        <div class="brand-logo-card">
-          <svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="30" text-anchor="middle" font-family="'Arial Black', sans-serif" font-size="20" font-weight="900" fill="#1A3A7C" letter-spacing="2">OAKLEY</text>
-            <rect x="28" y="36" width="104" height="1" fill="#E8A820" rx="0.5"/>
-          </svg>
-        </div>
-        <!-- Vogue Eyewear -->
-        <div class="brand-logo-card">
-          <svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="26" text-anchor="middle" font-family="Georgia, serif" font-size="18" font-style="italic" font-weight="bold" fill="#1A3A7C" letter-spacing="3">VOGUE</text>
-            <text x="80" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280" letter-spacing="4">EYEWEAR</text>
-          </svg>
-        </div>
-        <!-- Titan Eyeplus -->
-        <div class="brand-logo-card">
-          <svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="24" text-anchor="middle" font-family="'Trebuchet MS', sans-serif" font-size="16" font-weight="bold" fill="#1A3A7C" letter-spacing="2">TITAN</text>
-            <text x="80" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2563C4" letter-spacing="2" font-weight="bold">eye+</text>
-          </svg>
-        </div>
-        <!-- Essilor -->
-        <div class="brand-logo-card">
-          <svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="30" text-anchor="middle" font-family="'Trebuchet MS', sans-serif" font-size="20" font-weight="bold" fill="#1A3A7C" letter-spacing="1">Essilor</text>
-            <circle cx="38" cy="26" r="3" fill="none" stroke="#2563C4" stroke-width="1.5"/>
-            <line x1="28" y1="38" x2="132" y2="38" stroke="#2563C4" stroke-width="0.8" opacity="0.4"/>
-          </svg>
-        </div>
-        <!-- Zeiss -->
-        <div class="brand-logo-card">
-          <svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="32" text-anchor="middle" font-family="'Arial Black', sans-serif" font-size="22" font-weight="900" fill="#1A3A7C" letter-spacing="4">ZEISS</text>
-            <line x1="24" y1="10" x2="136" y2="10" stroke="#1A3A7C" stroke-width="2"/>
-            <line x1="24" y1="40" x2="136" y2="40" stroke="#1A3A7C" stroke-width="2"/>
-          </svg>
-        </div>
-        <!-- Crizal -->
-        <div class="brand-logo-card">
-          <svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="30" text-anchor="middle" font-family="'Trebuchet MS', sans-serif" font-size="20" font-weight="bold" fill="#2563C4" letter-spacing="2">Crizal</text>
-            <path d="M30 38 Q80 44 130 38" fill="none" stroke="#E8A820" stroke-width="1.5"/>
-          </svg>
-        </div>
-        <!-- Johnson & Johnson -->
-        <div class="brand-logo-card">
-          <svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="22" text-anchor="middle" font-family="'Brush Script MT', 'Segoe Script', cursive" font-size="16" fill="#c41e3a" letter-spacing="0.5">Johnson &amp;</text>
-            <text x="80" y="40" text-anchor="middle" font-family="'Brush Script MT', 'Segoe Script', cursive" font-size="16" fill="#c41e3a" letter-spacing="0.5">Johnson</text>
-          </svg>
-        </div>
-        <!-- Bausch + Lomb -->
-        <div class="brand-logo-card">
-          <svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="22" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#1A3A7C" letter-spacing="1">BAUSCH+LOMB</text>
-            <text x="80" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#4A87D0" letter-spacing="3">SEE BETTER. LIVE BETTER.</text>
-          </svg>
-        </div>
-        <!-- Fastrack -->
-        <div class="brand-logo-card">
-          <svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="30" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-size="20" font-weight="900" fill="#1A3A7C" letter-spacing="2">FASTRACK</text>
-            <polygon points="24,34 32,28 32,40" fill="#E8A820"/>
-          </svg>
-        </div>
-
-        <!-- ── Duplicate set for seamless loop ── -->
-        <div class="brand-logo-card">
-          <svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="22" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#1A3A7C" letter-spacing="1"><tspan fill="#1A3A7C">RAY</tspan><tspan fill="#c41e3a">·</tspan><tspan fill="#1A3A7C">BAN</tspan></text>
-            <line x1="30" y1="28" x2="130" y2="28" stroke="#c41e3a" stroke-width="1.5"/>
-            <text x="80" y="42" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#6B7280" letter-spacing="3">GENUINE SINCE 1937</text>
-          </svg>
-        </div>
-        <div class="brand-logo-card">
-          <svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="30" text-anchor="middle" font-family="'Arial Black', sans-serif" font-size="20" font-weight="900" fill="#1A3A7C" letter-spacing="2">OAKLEY</text>
-            <rect x="28" y="36" width="104" height="1" fill="#E8A820" rx="0.5"/>
-          </svg>
-        </div>
-        <div class="brand-logo-card">
-          <svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="26" text-anchor="middle" font-family="Georgia, serif" font-size="18" font-style="italic" font-weight="bold" fill="#1A3A7C" letter-spacing="3">VOGUE</text>
-            <text x="80" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280" letter-spacing="4">EYEWEAR</text>
-          </svg>
-        </div>
-        <div class="brand-logo-card">
-          <svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="24" text-anchor="middle" font-family="'Trebuchet MS', sans-serif" font-size="16" font-weight="bold" fill="#1A3A7C" letter-spacing="2">TITAN</text>
-            <text x="80" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2563C4" letter-spacing="2" font-weight="bold">eye+</text>
-          </svg>
-        </div>
-        <div class="brand-logo-card">
-          <svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="30" text-anchor="middle" font-family="'Trebuchet MS', sans-serif" font-size="20" font-weight="bold" fill="#1A3A7C" letter-spacing="1">Essilor</text>
-            <circle cx="38" cy="26" r="3" fill="none" stroke="#2563C4" stroke-width="1.5"/>
-            <line x1="28" y1="38" x2="132" y2="38" stroke="#2563C4" stroke-width="0.8" opacity="0.4"/>
-          </svg>
-        </div>
-        <div class="brand-logo-card">
-          <svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="32" text-anchor="middle" font-family="'Arial Black', sans-serif" font-size="22" font-weight="900" fill="#1A3A7C" letter-spacing="4">ZEISS</text>
-            <line x1="24" y1="10" x2="136" y2="10" stroke="#1A3A7C" stroke-width="2"/>
-            <line x1="24" y1="40" x2="136" y2="40" stroke="#1A3A7C" stroke-width="2"/>
-          </svg>
-        </div>
-        <div class="brand-logo-card">
-          <svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="30" text-anchor="middle" font-family="'Trebuchet MS', sans-serif" font-size="20" font-weight="bold" fill="#2563C4" letter-spacing="2">Crizal</text>
-            <path d="M30 38 Q80 44 130 38" fill="none" stroke="#E8A820" stroke-width="1.5"/>
-          </svg>
-        </div>
-        <div class="brand-logo-card">
-          <svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="22" text-anchor="middle" font-family="'Brush Script MT', 'Segoe Script', cursive" font-size="16" fill="#c41e3a" letter-spacing="0.5">Johnson &amp;</text>
-            <text x="80" y="40" text-anchor="middle" font-family="'Brush Script MT', 'Segoe Script', cursive" font-size="16" fill="#c41e3a" letter-spacing="0.5">Johnson</text>
-          </svg>
-        </div>
-        <div class="brand-logo-card">
-          <svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="22" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#1A3A7C" letter-spacing="1">BAUSCH+LOMB</text>
-            <text x="80" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#4A87D0" letter-spacing="3">SEE BETTER. LIVE BETTER.</text>
-          </svg>
-        </div>
-        <div class="brand-logo-card">
-          <svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="30" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-size="20" font-weight="900" fill="#1A3A7C" letter-spacing="2">FASTRACK</text>
-            <polygon points="24,34 32,28 32,40" fill="#E8A820"/>
-          </svg>
-        </div>
+        <div class="brand-logo-card"><img src="Logos/ray-ban-logo.png" alt="Ray-Ban" /></div>
+        <div class="brand-logo-card"><img src="Logos/Oakley_logo.svg.png" alt="Oakley" /></div>
+        <div class="brand-logo-card"><img src="Logos/vogue.webp" alt="Vogue Eyewear" /></div>
+        <div class="brand-logo-card"><img src="Logos/Essilor.png" alt="Essilor" /></div>
+        <div class="brand-logo-card"><img src="Logos/Zeiss-Logo.png" alt="Zeiss" /></div>
+        <div class="brand-logo-card"><img src="Logos/Johnson_&_Johnson-Logo.wine.png" alt="Johnson & Johnson" /></div>
+        <div class="brand-logo-card"><img src="Logos/Bausch_and_Lomb_Logo_2010.svg.png" alt="Bausch + Lomb" /></div>
+        <div class="brand-logo-card"><img src="Logos/armani exchange.png" alt="Armani Exchange" /></div>
+        <div class="brand-logo-card wide"><img src="Logos/emporio-armani-2-logo.png" alt="Emporio Armani" /></div>
+        <div class="brand-logo-card"><img src="Logos/Silhouette-logo.jpg" alt="Silhouette" /></div>
+        <div class="brand-logo-card"><img src="Logos/carrera-2.svg" alt="Carrera" /></div>
+        <div class="brand-logo-card"><img src="Logos/Tommy_Hilfiger_Logo.png" alt="Tommy Hilfiger" /></div>
+        <div class="brand-logo-card"><img src="Logos/calvin-klein-1-logo-black-and-white.png" alt="Calvin Klein" /></div>
+        <div class="brand-logo-card"><img src="Logos/stepper-logo.png" alt="Stepper" /></div>
+        <div class="brand-logo-card wide"><img src="Logos/SEVENTH_STREET_by_SAFILO___LOGO_Tavola_disegno_1.png" alt="Seventh Street by Safilo" /></div>
+        <!-- duplicate for seamless loop -->
+        <div class="brand-logo-card"><img src="Logos/ray-ban-logo.png" alt="Ray-Ban" /></div>
+        <div class="brand-logo-card"><img src="Logos/Oakley_logo.svg.png" alt="Oakley" /></div>
+        <div class="brand-logo-card"><img src="Logos/vogue.webp" alt="Vogue Eyewear" /></div>
+        <div class="brand-logo-card"><img src="Logos/Essilor.png" alt="Essilor" /></div>
+        <div class="brand-logo-card"><img src="Logos/Zeiss-Logo.png" alt="Zeiss" /></div>
+        <div class="brand-logo-card"><img src="Logos/Johnson_&_Johnson-Logo.wine.png" alt="Johnson & Johnson" /></div>
+        <div class="brand-logo-card"><img src="Logos/Bausch_and_Lomb_Logo_2010.svg.png" alt="Bausch + Lomb" /></div>
+        <div class="brand-logo-card"><img src="Logos/armani exchange.png" alt="Armani Exchange" /></div>
+        <div class="brand-logo-card wide"><img src="Logos/emporio-armani-2-logo.png" alt="Emporio Armani" /></div>
+        <div class="brand-logo-card"><img src="Logos/Silhouette-logo.jpg" alt="Silhouette" /></div>
+        <div class="brand-logo-card"><img src="Logos/carrera-2.svg" alt="Carrera" /></div>
+        <div class="brand-logo-card"><img src="Logos/Tommy_Hilfiger_Logo.png" alt="Tommy Hilfiger" /></div>
+        <div class="brand-logo-card"><img src="Logos/calvin-klein-1-logo-black-and-white.png" alt="Calvin Klein" /></div>
+        <div class="brand-logo-card"><img src="Logos/stepper-logo.png" alt="Stepper" /></div>
+        <div class="brand-logo-card wide"><img src="Logos/SEVENTH_STREET_by_SAFILO___LOGO_Tavola_disegno_1.png" alt="Seventh Street by Safilo" /></div>
       </div>
     </div>
   </div>
@@ -1374,40 +1277,33 @@
     nav.classList.toggle('scrolled', window.scrollY > 20);
   });
 
-  // Counter animation
-  const counters = document.querySelectorAll('.counter');
-  let counterStarted = false;
+  // Counter animation — starts after splash screen hides
+  function runCounters() {
+    document.querySelectorAll('.counter').forEach(function(el) {
+      var target = parseFloat(el.getAttribute('data-target'));
+      var duration = parseInt(el.getAttribute('data-duration')) || 2000;
+      var decimals = parseInt(el.getAttribute('data-decimals')) || 0;
+      var startTime = null;
 
-  function animateCounters() {
-    counters.forEach(el => {
-      const target = parseFloat(el.dataset.target);
-      const duration = parseInt(el.dataset.duration) || 2000;
-      const decimals = parseInt(el.dataset.decimals) || 0;
-      const start = performance.now();
-
-      function tick(now) {
-        const elapsed = now - start;
-        const progress = Math.min(elapsed / duration, 1);
-        // ease-out cubic
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const current = eased * target;
-        el.textContent = current.toFixed(decimals);
-        if (progress < 1) requestAnimationFrame(tick);
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var elapsed = timestamp - startTime;
+        var progress = Math.min(elapsed / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        var current = eased * target;
+        el.textContent = decimals > 0 ? current.toFixed(decimals) : Math.floor(current);
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          el.textContent = decimals > 0 ? target.toFixed(decimals) : target;
+        }
       }
-      requestAnimationFrame(tick);
+      requestAnimationFrame(step);
     });
   }
 
-  // Intersection observer — start counters when trust bar is visible
-  const trustObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !counterStarted) {
-        counterStarted = true;
-        animateCounters();
-      }
-    });
-  }, { threshold: 0.3 });
-  trustObserver.observe(document.getElementById('trustBar'));
+  // Start counters after splash screen fades (3s delay)
+  setTimeout(runCounters, 3000);
 
   // Mobile menu
   const hamburger = document.getElementById('hamburger');
