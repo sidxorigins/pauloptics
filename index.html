@@ -918,7 +918,7 @@
       position: relative;
       overflow: hidden;
       isolation: isolate;
-      animation: surfaceReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+      /* scroll-reveal handled by JS */
     }
     .service-card::before,
     .why-feature-card::before,
@@ -963,12 +963,7 @@
       transform: translateX(340%) rotate(18deg);
       opacity: 1;
     }
-    .services-grid .service-card:nth-child(1) { animation-delay: 0.04s; }
-    .services-grid .service-card:nth-child(2) { animation-delay: 0.1s; }
-    .services-grid .service-card:nth-child(3) { animation-delay: 0.16s; }
-    .services-grid .service-card:nth-child(4) { animation-delay: 0.22s; }
-    .services-grid .service-card:nth-child(5) { animation-delay: 0.28s; }
-    .services-grid .service-card:nth-child(6) { animation-delay: 0.34s; }
+    /* stagger handled by JS */
     .service-icon {
       width: 56px;
       height: 56px;
@@ -1087,7 +1082,7 @@
       box-shadow: var(--clay-shadow);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       padding: 1.5rem;
-      animation: surfaceReveal 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+      /* scroll-reveal handled by JS */
     }
     .why-feature-card:hover {
       transform: translateY(-4px);
@@ -1701,7 +1696,7 @@
       position: relative;
       overflow: hidden;
       isolation: isolate;
-      animation: surfaceReveal 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+      /* scroll-reveal handled by JS */
     }
     .testimonial-stars {
       color: var(--po-gold);
@@ -1741,7 +1736,7 @@
       position: relative;
       overflow: hidden;
       isolation: isolate;
-      animation: surfaceReveal 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+      /* scroll-reveal handled by JS */
     }
     .visit-card h3 {
       font-family: var(--r);
@@ -2298,6 +2293,128 @@
       .footer-meta { flex-direction: column; }
       .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
     }
+    /* ── SCROLL PROGRESS BAR ── */
+    #scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--po-royal), var(--po-gold));
+      z-index: 99999;
+      transition: width 0.05s linear;
+      box-shadow: 0 0 8px rgba(232,168,32,0.5);
+    }
+
+    /* ── SCROLL REVEAL BASE STATES ── */
+    .sr-hidden {
+      opacity: 0;
+      transform: translateY(28px) scale(0.97);
+    }
+    .sr-hidden-left {
+      opacity: 0;
+      transform: translateX(-32px);
+    }
+    .sr-hidden-right {
+      opacity: 0;
+      transform: translateX(32px);
+    }
+    .sr-visible {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ── SECTION TITLE CLIP REVEAL ── */
+    .title-reveal-wrap {
+      overflow: hidden;
+      display: block;
+    }
+    .title-reveal-inner {
+      display: block;
+      transform: translateY(100%);
+      transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .title-revealed .title-reveal-inner {
+      transform: translateY(0);
+    }
+
+    /* ── GOLD UNDERLINE DRAW ── */
+    .section-title {
+      position: relative;
+      display: inline-block;
+    }
+    .title-underline {
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      height: 3px;
+      width: 0;
+      background: linear-gradient(90deg, var(--po-gold), rgba(232,168,32,0.2));
+      border-radius: 999px;
+      transition: width 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+    }
+    .title-underline.drawn {
+      width: 100%;
+    }
+
+    /* ── 3D CARD TILT ── */
+    .tilt-card {
+      transform-style: preserve-3d;
+      transition: transform 0.15s linear, box-shadow 0.25s ease;
+      will-change: transform;
+    }
+    .tilt-card:hover {
+      box-shadow: var(--clay-shadow-lg) !important;
+    }
+    .tilt-card .tilt-shine {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.18) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .tilt-card:hover .tilt-shine { opacity: 1; }
+
+    /* ── MAGNETIC BUTTON ── */
+    .btn-magnetic {
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease !important;
+    }
+
+    /* ── FLOATING LABEL PULSE ── */
+    @keyframes labelPulse {
+      0%, 100% { box-shadow: var(--clay-shadow-sm), 0 0 0 0 rgba(37,99,196,0.2); }
+      50% { box-shadow: var(--clay-shadow-sm), 0 0 0 6px rgba(37,99,196,0); }
+    }
+    .section-label { animation: labelPulse 3s ease-in-out infinite; }
+
+    /* ── STAGGER TRANSITION DELAYS (set via JS) ── */
+    .sr-d1 { transition-delay: 0.05s !important; }
+    .sr-d2 { transition-delay: 0.12s !important; }
+    .sr-d3 { transition-delay: 0.19s !important; }
+    .sr-d4 { transition-delay: 0.26s !important; }
+    .sr-d5 { transition-delay: 0.33s !important; }
+    .sr-d6 { transition-delay: 0.40s !important; }
+
+    /* ── CTA BANNER GLOW PULSE ── */
+    @keyframes ctaGlow {
+      0%, 100% { box-shadow: 12px 12px 30px rgba(26,58,124,0.25), -6px -6px 16px rgba(255,255,255,0.15), inset 0 2px 6px rgba(255,255,255,0.08); }
+      50% { box-shadow: 12px 12px 40px rgba(26,58,124,0.35), -6px -6px 24px rgba(255,255,255,0.2), inset 0 2px 6px rgba(255,255,255,0.08), 0 0 60px rgba(232,168,32,0.08); }
+    }
+    .cta-banner.sr-visible { animation: ctaGlow 4s ease-in-out infinite 0.7s; }
+
+    /* ── BRAND LOGO ENTRANCE ── */
+    .brands-wrap.sr-visible {
+      animation: brandsReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    @keyframes brandsReveal {
+      from { opacity: 0; transform: translateY(20px) scale(0.98); }
+      to { opacity: 1; transform: none; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .hero::before,
       .hero::after,
@@ -2329,6 +2446,9 @@
       .testimonial-card,
       .visit-card,
       .why-feature-card,
+      .title-reveal-inner,
+      .title-underline,
+      .sr-hidden, .sr-hidden-left, .sr-hidden-right,
       .nav-links a::before,
       .btn-clay::before,
       .btn-clay-outline::before,
@@ -2350,11 +2470,21 @@
         opacity: 0 !important;
         animation: none !important;
       }
+      .sr-hidden, .sr-hidden-left, .sr-hidden-right {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .title-reveal-inner {
+        transform: none !important;
+      }
     }
   </style>
 </head>
 <body>
 <div class="site-cursor-orb" aria-hidden="true"></div>
+
+<!-- Scroll progress -->
+<div id="scroll-progress"></div>
 
 <!-- ── SPLASH SCREEN ── -->
 <div class="splash-overlay" id="splash">
@@ -2986,6 +3116,186 @@
       document.getElementById('waPopup').classList.remove('open');
     }
   });
+</script>
+
+<!-- ── MOTION ANIMATIONS ── -->
+<script>
+(function() {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── 1. SCROLL PROGRESS BAR ── */
+  const progressBar = document.getElementById('scroll-progress');
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (max > 0 ? (scrolled / max) * 100 : 0) + '%';
+  }, { passive: true });
+
+  /* ── 2. SECTION TITLE REVEAL (clip from bottom + underline draw) ── */
+  document.querySelectorAll('.section-title').forEach(el => {
+    const text = el.innerHTML;
+    el.innerHTML = `<span class="title-reveal-wrap"><span class="title-reveal-inner">${text}</span></span><span class="title-underline"></span>`;
+    el.style.display = 'block';
+    if (prefersReduced) {
+      el.querySelector('.title-reveal-inner').style.transform = 'none';
+      el.querySelector('.title-underline').style.width = '100%';
+      return;
+    }
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          el.classList.add('title-revealed');
+          el.querySelector('.title-underline').classList.add('drawn');
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    obs.observe(el);
+  });
+
+  /* ── 3. SECTION LABELS fade up ── */
+  document.querySelectorAll('.section-label').forEach((el, i) => {
+    if (prefersReduced) return;
+    el.classList.add('sr-hidden');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          el.classList.add('sr-visible');
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.5 });
+    obs.observe(el);
+  });
+
+  /* ── 4. GENERIC STAGGER REVEAL for card grids ── */
+  function observeGrid(selector, options = {}) {
+    const grids = document.querySelectorAll(selector);
+    grids.forEach(grid => {
+      const cards = grid.children;
+      Array.from(cards).forEach((card, i) => {
+        if (prefersReduced) return;
+        card.classList.add('sr-hidden');
+        card.classList.add(`sr-d${Math.min(i + 1, 6)}`);
+      });
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            Array.from(cards).forEach(card => card.classList.add('sr-visible'));
+            obs.disconnect();
+          }
+        });
+      }, { threshold: options.threshold || 0.1 });
+      obs.observe(grid);
+    });
+  }
+  observeGrid('.services-grid');
+  observeGrid('.why-grid');
+  observeGrid('.testimonials-grid');
+  observeGrid('.visit-grid', { threshold: 0.05 });
+
+  /* ── 5. SINGLE ELEMENT REVEALS (trust bar, cta banner, brands, footer) ── */
+  ['.brands-wrap', '.cta-banner', '.footer-shell', '.trust-inner'].forEach(sel => {
+    const el = document.querySelector(sel);
+    if (!el || prefersReduced) return;
+    el.classList.add('sr-hidden');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          el.classList.add('sr-visible');
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.1 });
+    obs.observe(el);
+  });
+
+  /* ── 6. SECTION DESC fade up ── */
+  document.querySelectorAll('.section-desc').forEach(el => {
+    if (prefersReduced) return;
+    el.classList.add('sr-hidden');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          setTimeout(() => el.classList.add('sr-visible'), 200);
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.4 });
+    obs.observe(el);
+  });
+
+  /* ── 7. 3D TILT on service & why cards ── */
+  if (!prefersReduced) {
+    document.querySelectorAll('.service-card, .why-feature-card, .testimonial-card').forEach(card => {
+      card.classList.add('tilt-card');
+      // Inject shine layer
+      const shine = document.createElement('div');
+      shine.className = 'tilt-shine';
+      card.appendChild(shine);
+
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const x = e.clientX - r.left;
+        const y = e.clientY - r.top;
+        const cx = r.width / 2;
+        const cy = r.height / 2;
+        const rx = ((y - cy) / cy) * -7;
+        const ry = ((x - cx) / cx) * 7;
+        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px) scale(1.015)`;
+        card.style.setProperty('--mx', `${(x / r.width) * 100}%`);
+        card.style.setProperty('--my', `${(y / r.height) * 100}%`);
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  }
+
+  /* ── 8. MAGNETIC CTA BUTTONS ── */
+  if (!prefersReduced) {
+    document.querySelectorAll('.btn-clay, .btn-clay-outline, .btn-clay-gold').forEach(btn => {
+      btn.classList.add('btn-magnetic');
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        const x = e.clientX - r.left - r.width / 2;
+        const y = e.clientY - r.top - r.height / 2;
+        btn.style.transform = `translate(${x * 0.22}px, ${y * 0.22}px) translateY(-2px)`;
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+      });
+    });
+  }
+
+  /* ── 9. PARALLAX on hero blobs on scroll ── */
+  if (!prefersReduced) {
+    const blob1 = document.querySelector('.hero-blob-1');
+    const blob2 = document.querySelector('.hero-blob-2');
+    const blob3 = document.querySelector('.hero-blob-3');
+    window.addEventListener('scroll', () => {
+      const sy = window.scrollY;
+      if (blob1) blob1.style.transform = `translateY(${sy * -0.12}px)`;
+      if (blob2) blob2.style.transform = `translateY(${sy * -0.08}px)`;
+      if (blob3) blob3.style.transform = `translateY(${sy * -0.06}px)`;
+    }, { passive: true });
+  }
+
+  /* ── 10. NAV active link highlight on scroll ── */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--po-navy)' : '';
+      a.style.background = a.getAttribute('href') === `#${current}` ? 'rgba(200,220,245,0.4)' : '';
+    });
+  }, { passive: true });
+
+})();
 </script>
 
 </body>
