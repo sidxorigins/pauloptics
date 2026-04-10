@@ -1417,6 +1417,326 @@
       stroke-linecap: round;
       stroke-linejoin: round;
     }
+    /* ── WHY SCENES — OPTICAL ── */
+
+    /* Shared scene base */
+    .why-scene { border-radius: 0; overflow: visible; }
+    .why-scene * { box-sizing: border-box; }
+
+    /* ── SCENE 1: Legacy Timeline ── */
+    .scene-legacy .sl-track {
+      position: absolute;
+      left: 24px; right: 24px;
+      top: 50%; transform: translateY(-50%);
+      height: 4px;
+      background: rgba(26,58,124,0.1);
+      border-radius: 99px;
+    }
+    .scene-legacy .sl-fill {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 0;
+      background: linear-gradient(90deg, var(--po-royal), var(--po-gold));
+      border-radius: 99px;
+      animation: slFill 3s 0.6s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    @keyframes slFill { to { width: 100%; } }
+    .scene-legacy .sl-milestones {
+      position: absolute;
+      left: 24px; right: 24px;
+      top: calc(50% - 2px);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .scene-legacy .sl-mile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: 0;
+      animation: slMile 0.5s ease forwards;
+    }
+    .scene-legacy .sl-mile:nth-child(1) { animation-delay: 0.8s; }
+    .scene-legacy .sl-mile:nth-child(2) { animation-delay: 1.2s; }
+    .scene-legacy .sl-mile:nth-child(3) { animation-delay: 1.6s; }
+    .scene-legacy .sl-mile:nth-child(4) { animation-delay: 2.0s; }
+    @keyframes slMile {
+      from { opacity:0; transform: translateY(6px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+    .scene-legacy .sl-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--clay-surface);
+      border: 3px solid var(--po-royal);
+      box-shadow: 0 0 0 3px rgba(37,99,196,0.15);
+      position: relative;
+      top: 6px;
+    }
+    .scene-legacy .sl-dot.active {
+      background: var(--po-gold);
+      border-color: var(--po-gold);
+      box-shadow: 0 0 0 4px rgba(232,168,32,0.25);
+      animation: dotPulse 2s ease-in-out infinite;
+    }
+    @keyframes dotPulse {
+      0%,100% { box-shadow: 0 0 0 4px rgba(232,168,32,0.25); }
+      50%      { box-shadow: 0 0 0 8px rgba(232,168,32,0.1); }
+    }
+    .scene-legacy .sl-year {
+      font-family: var(--r);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--po-navy);
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .scene-legacy .sl-year.active { color: var(--po-gold); font-size: 11px; }
+    .scene-legacy .sl-badge {
+      position: absolute;
+      left: 50%; top: 22px;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--po-royal), var(--po-sky));
+      color: #fff;
+      border-radius: 12px;
+      padding: 6px 14px;
+      font-family: var(--r);
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      box-shadow: 0 8px 20px rgba(37,99,196,0.28);
+      white-space: nowrap;
+      opacity: 0;
+      animation: slMile 0.6s 0.4s ease forwards;
+    }
+    .scene-legacy .sl-badge span {
+      font-size: 11px;
+      font-weight: 600;
+      opacity: 0.85;
+      letter-spacing: 1px;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+
+    /* ── SCENE 2: Phoropter Eye Test ── */
+    .scene-phoropter .sp-frame {
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -52%);
+      width: 180px; height: 80px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .scene-phoropter .sp-lens-wrap {
+      width: 74px; height: 74px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.7) 0%, rgba(200,220,245,0.3) 40%, transparent 70%);
+      border: 4px solid rgba(26,58,124,0.18);
+      box-shadow: 0 8px 24px rgba(37,99,196,0.15), inset 0 2px 4px rgba(255,255,255,0.6);
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+      animation: spSpinL 8s linear infinite;
+    }
+    .scene-phoropter .sp-lens-wrap:nth-child(3) { animation: spSpinR 8s linear infinite; }
+    @keyframes spSpinL {
+      0%   { box-shadow: 0 8px 24px rgba(37,99,196,0.15), inset 0 2px 4px rgba(255,255,255,0.6); }
+      50%  { box-shadow: 0 8px 24px rgba(232,168,32,0.18), inset 0 2px 4px rgba(255,240,180,0.6); }
+      100% { box-shadow: 0 8px 24px rgba(37,99,196,0.15), inset 0 2px 4px rgba(255,255,255,0.6); }
+    }
+    @keyframes spSpinR {
+      0%   { box-shadow: 0 8px 24px rgba(232,168,32,0.18), inset 0 2px 4px rgba(255,240,180,0.6); }
+      50%  { box-shadow: 0 8px 24px rgba(37,99,196,0.15), inset 0 2px 4px rgba(255,255,255,0.6); }
+      100% { box-shadow: 0 8px 24px rgba(232,168,32,0.18), inset 0 2px 4px rgba(255,240,180,0.6); }
+    }
+    .scene-phoropter .sp-lens-inner {
+      position: absolute;
+      inset: 8px;
+      border-radius: 50%;
+      border: 1px dashed rgba(37,99,196,0.22);
+    }
+    .scene-phoropter .sp-lens-inner::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border-radius: 50%;
+      border: 1px solid rgba(232,168,32,0.3);
+    }
+    .scene-phoropter .sp-crosshair {
+      position: absolute;
+      inset: 0;
+    }
+    .scene-phoropter .sp-crosshair::before,
+    .scene-phoropter .sp-crosshair::after {
+      content: '';
+      position: absolute;
+      background: rgba(37,99,196,0.15);
+    }
+    .scene-phoropter .sp-crosshair::before { left: 50%; top: 10%; bottom: 10%; width: 1px; transform: translateX(-50%); }
+    .scene-phoropter .sp-crosshair::after  { top: 50%; left: 10%; right: 10%; height: 1px; transform: translateY(-50%); }
+    .scene-phoropter .sp-bridge {
+      width: 18px; height: 6px;
+      background: rgba(26,58,124,0.2);
+      border-radius: 99px;
+      flex-shrink: 0;
+    }
+    .scene-phoropter .sp-chart {
+      position: absolute;
+      bottom: 18px; left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--r);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 6px;
+      color: rgba(26,58,124,0.4);
+      white-space: nowrap;
+      animation: spChart 4s ease-in-out infinite;
+    }
+    @keyframes spChart {
+      0%,100% { letter-spacing: 6px; color: rgba(26,58,124,0.4); }
+      50%      { letter-spacing: 4px; color: rgba(26,58,124,0.7); }
+    }
+    .scene-phoropter .sp-scan {
+      position: absolute;
+      left: 20px; right: 20px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(37,99,196,0.4), rgba(232,168,32,0.6), rgba(37,99,196,0.4), transparent);
+      animation: spScan 3s ease-in-out infinite;
+      top: 22px;
+    }
+    @keyframes spScan {
+      0%,100% { top: 22px; opacity: 0.6; }
+      50%      { top: 75%; opacity: 1; }
+    }
+
+    /* ── SCENE 3: Authentic Frames ── */
+    .scene-frames .sf-glasses {
+      position: absolute;
+      left: 50%; top: 36px;
+      transform: translateX(-50%);
+      width: 160px; height: 56px;
+      animation: sfFloat 4s ease-in-out infinite;
+    }
+    @keyframes sfFloat {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(-6px); }
+    }
+    .scene-frames .sf-badge {
+      position: absolute;
+      right: 20px; bottom: 28px;
+      background: linear-gradient(135deg, #E8A820, #c8880a);
+      color: #fff;
+      border-radius: 12px;
+      padding: 6px 12px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: flex; align-items: center; gap: 5px;
+      box-shadow: 0 6px 18px rgba(232,168,32,0.35);
+      animation: sfBadge 3.5s ease-in-out infinite;
+    }
+    @keyframes sfBadge {
+      0%,100% { transform: scale(1); }
+      50%      { transform: scale(1.06); }
+    }
+    .scene-frames .sf-brand-strip {
+      position: absolute;
+      left: 20px; bottom: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .scene-frames .sf-brand {
+      font-family: var(--r);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(26,58,124,0.35);
+      animation: sfBrand 6s ease-in-out infinite;
+    }
+    .scene-frames .sf-brand:nth-child(2) { animation-delay: -2s; color: rgba(26,58,124,0.25); }
+    .scene-frames .sf-brand:nth-child(3) { animation-delay: -4s; color: rgba(26,58,124,0.18); }
+    @keyframes sfBrand {
+      0%,40%,100% { opacity: 1; }
+      20%          { opacity: 0.5; }
+    }
+    .scene-frames .sf-tick {
+      position: absolute;
+      left: 20px; top: 30px;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--po-royal);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 16px rgba(37,99,196,0.28);
+      animation: sfTick 2.4s ease-in-out infinite;
+    }
+    @keyframes sfTick {
+      0%,100% { transform: scale(1); }
+      50%      { transform: scale(1.1); }
+    }
+
+    /* ── SCENE 4: Patient Care ── */
+    .scene-care2 .sc-card {
+      position: absolute;
+      left: 20px; top: 22px; right: 20px;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(26,58,124,0.08);
+      border-radius: 16px;
+      padding: 10px 12px;
+      box-shadow: var(--clay-shadow-sm);
+    }
+    .scene-care2 .sc-label {
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--po-royal);
+      margin-bottom: 6px;
+    }
+    .scene-care2 .sc-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(200,220,245,0.5);
+      font-size: 11px;
+      opacity: 0;
+      animation: scRow 0.4s ease forwards;
+    }
+    .scene-care2 .sc-row:last-child { border-bottom: none; }
+    .scene-care2 .sc-row:nth-child(2) { animation-delay: 0.6s; }
+    .scene-care2 .sc-row:nth-child(3) { animation-delay: 1.0s; }
+    .scene-care2 .sc-row:nth-child(4) { animation-delay: 1.4s; }
+    @keyframes scRow {
+      from { opacity:0; transform: translateX(-6px); }
+      to   { opacity:1; transform: translateX(0); }
+    }
+    .scene-care2 .sc-yr { font-weight: 700; color: var(--po-navy); font-family: var(--c); }
+    .scene-care2 .sc-val { color: var(--po-gray); font-size: 10px; }
+    .scene-care2 .sc-new { color: var(--po-royal); font-weight: 700; }
+    .scene-care2 .sc-pulse {
+      position: absolute;
+      left: 20px; right: 20px; bottom: 18px;
+      height: 24px;
+    }
+    .scene-care2 .sc-pulse svg {
+      width: 100%; height: 100%;
+    }
+    .scene-care2 .sc-pulse path {
+      stroke-dasharray: 200;
+      stroke-dashoffset: 200;
+      animation: scPulse 2.5s 1.8s ease forwards, scPulseLoop 3s 4.5s ease-in-out infinite;
+    }
+    @keyframes scPulse     { to { stroke-dashoffset: 0; } }
+    @keyframes scPulseLoop { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
+
+    /* old keyframes still used for blobs etc — keep these */
+    @keyframes orbitPulse { 0%,100%{transform:scale(1);opacity:.9} 50%{transform:scale(1.06);opacity:1} }
+    @keyframes coreFloat  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
     .scene-expertise .scene-orbit {
       right: 36px;
       top: 34px;
@@ -2955,12 +3275,15 @@
     <div class="why-grid">
       <article class="why-feature-card">
         <div class="why-media">
-          <div class="why-scene scene-expertise" aria-hidden="true">
-            <div class="scene-grid"></div>
-            <div class="scene-orbit"></div>
-            <div class="scene-core"></div>
-            <div class="scene-dot"></div>
-            <div class="scene-bar"></div>
+          <div class="why-scene scene-legacy" aria-hidden="true">
+            <div class="sl-badge">38 <span>YEARS</span></div>
+            <div class="sl-track"><div class="sl-fill"></div></div>
+            <div class="sl-milestones">
+              <div class="sl-mile"><div class="sl-year">1986</div><div class="sl-dot"></div></div>
+              <div class="sl-mile"><div class="sl-year">2000</div><div class="sl-dot"></div></div>
+              <div class="sl-mile"><div class="sl-year">2015</div><div class="sl-dot"></div></div>
+              <div class="sl-mile"><div class="sl-year active">2024</div><div class="sl-dot active"></div></div>
+            </div>
           </div>
           <div class="why-badge" aria-hidden="true">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8-10-8-10-8z"></path></svg>
@@ -2977,16 +3300,14 @@
       </article>
       <article class="why-feature-card alt-a">
         <div class="why-media">
-          <div class="why-scene scene-testing" aria-hidden="true">
-            <div class="scene-device"></div>
-            <div class="scene-rail"></div>
-            <div class="scene-lens left"></div>
-            <div class="scene-lens right"></div>
-            <div class="scene-bridge"></div>
-            <div class="scene-knob left"></div>
-            <div class="scene-knob right"></div>
-            <div class="scene-beam"></div>
-            <div class="scene-marks"></div>
+          <div class="why-scene scene-phoropter" aria-hidden="true">
+            <div class="sp-scan"></div>
+            <div class="sp-frame">
+              <div class="sp-lens-wrap"><div class="sp-lens-inner"></div><div class="sp-crosshair"></div></div>
+              <div class="sp-bridge"></div>
+              <div class="sp-lens-wrap"><div class="sp-lens-inner"></div><div class="sp-crosshair"></div></div>
+            </div>
+            <div class="sp-chart">F P T O Z</div>
           </div>
           <div class="why-badge" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M4 14l5-5 4 4 7-7"></path><path d="M20 10V4h-6"></path></svg>
@@ -3003,15 +3324,29 @@
       </article>
       <article class="why-feature-card alt-b">
         <div class="why-media">
-          <div class="why-scene scene-authentic" aria-hidden="true">
-            <div class="scene-stack">
-              <div class="scene-card card-a"></div>
-              <div class="scene-card card-b"></div>
-              <div class="scene-card card-c"></div>
-              <div class="scene-bridge"></div>
+          <div class="why-scene scene-frames" aria-hidden="true">
+            <!-- Glasses SVG -->
+            <svg class="sf-glasses" viewBox="0 0 160 56" fill="none">
+              <rect x="4" y="10" width="62" height="36" rx="18" stroke="#1A3A7C" stroke-width="3.5" fill="rgba(200,220,245,0.2)"/>
+              <rect x="94" y="10" width="62" height="36" rx="18" stroke="#1A3A7C" stroke-width="3.5" fill="rgba(200,220,245,0.2)"/>
+              <path d="M66 28 Q80 20 94 28" stroke="#1A3A7C" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <line x1="1" y1="16" x2="4" y2="28" stroke="#1A3A7C" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="159" y1="16" x2="156" y2="28" stroke="#1A3A7C" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="35" cy="28" r="8" fill="rgba(37,99,196,0.1)"/>
+              <circle cx="125" cy="28" r="8" fill="rgba(37,99,196,0.1)"/>
+            </svg>
+            <div class="sf-tick">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-9"/></svg>
             </div>
-            <div class="scene-seal"></div>
-            <div class="scene-ribbon"></div>
+            <div class="sf-badge">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              100% Authentic
+            </div>
+            <div class="sf-brand-strip">
+              <div class="sf-brand">Ray-Ban</div>
+              <div class="sf-brand">Oakley</div>
+              <div class="sf-brand">Essilor</div>
+            </div>
           </div>
           <div class="why-badge" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
@@ -3028,12 +3363,19 @@
       </article>
       <article class="why-feature-card alt-c">
         <div class="why-media">
-          <div class="why-scene scene-care" aria-hidden="true">
-            <div class="scene-arc"></div>
-            <div class="scene-person person-a"></div>
-            <div class="scene-person person-b"></div>
-            <div class="scene-heart"></div>
-            <div class="scene-wave"></div>
+          <div class="why-scene scene-care2" aria-hidden="true">
+            <div class="sc-card">
+              <div class="sc-label">Prescription History</div>
+              <div class="sc-row"><span class="sc-yr">2019</span><span class="sc-val">OD -1.50 / OS -1.25</span></div>
+              <div class="sc-row"><span class="sc-yr">2021</span><span class="sc-val">OD -2.00 / OS -1.75</span></div>
+              <div class="sc-row"><span class="sc-yr sc-new">2024 ✦</span><span class="sc-val sc-new">OD -2.50 / OS -2.00</span></div>
+            </div>
+            <div class="sc-pulse">
+              <svg viewBox="0 0 200 24" fill="none">
+                <path d="M0 12 Q20 12 30 12 Q40 12 45 4 Q50 -4 55 20 Q60 44 65 12 Q80 12 200 12"
+                  stroke="#2563C4" stroke-width="2" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
           </div>
           <div class="why-badge" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.35-7-11a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 6.65-7 11-7 11z"></path></svg>
